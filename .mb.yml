@@ -1,29 +1,10 @@
 version: "1"
 name: sample
-vars:
-  some_version: 4.4
+variables:
+  version: "file://tests/fixtures/sample.source.json@version"
 
 config:
   commands:
     default: "DemoCommand"
-    dist: "DockerDist"
-    build:
-      - image: node-build
-        cmd: blah
-        env:
-          - build_context
-          - blah
-    dist:
-      - docker build -t 
-      - docker push 
+    test: "DemoCommand"
 
-
-  version_scheme: "TestVersionScheme"
-  build_context: "TestVersionScheme"
-  template_engine: "TestVersionScheme"
-
-build:
-  build_image: "silverbp.io/some-build:@{{vars.some_version}}"
-  version: "file://tests/fixtures/sample.source.json@version"
-  image_name: "silverbp.io/@{{name}}:@{{build.version}}"
-  path: "$SAMPLE_ENV_VARIABLE"
